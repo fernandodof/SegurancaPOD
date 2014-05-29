@@ -16,9 +16,9 @@ import java.util.logging.Logger;
  *
  * @author Fernando
  */
-public class RegiterLookup{
+public class RegisterLookup{
     
-    public void lookup(Session session, Message message){
+    public void publishLookup(Session session, Message message){
 
         try {
             Registry registry = LocateRegistry.getRegistry("localhost", 10888);
@@ -26,7 +26,7 @@ public class RegiterLookup{
             
             loginService.sendMessage(session, message);
         } catch (RemoteException|NotBoundException ex) {
-            Logger.getLogger(RegiterLookup.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(RegisterLookup.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

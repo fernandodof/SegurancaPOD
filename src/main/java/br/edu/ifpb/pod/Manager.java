@@ -45,6 +45,8 @@ public class Manager implements Serializable, FacadeService{
     @Override
     public Message sendMessage(Session session, Message message) {
         if(sessionList.contains(session)){
+            RegisterLookup registerLookup = new RegisterLookup();
+            registerLookup.publishLookup(session, message);
             return message;
         }
         return null;
