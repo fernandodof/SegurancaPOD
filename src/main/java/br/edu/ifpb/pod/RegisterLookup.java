@@ -18,15 +18,16 @@ import java.util.logging.Logger;
  */
 public class RegisterLookup{
     
-    public void publishLookup(Session session, Message message){
+    public Message publishLookup(Session session, Message message){
 
         try {
             Registry registry = LocateRegistry.getRegistry("localhost", 10888);
-            FacadeService loginService = (FacadeService) registry.lookup("FacadeService");
+            FacadeService facadeService = (FacadeService) registry.lookup("FacadeService");
             
-            loginService.sendMessage(session, message);
+            return facadeService.sendMessage(session, message);
         } catch (RemoteException|NotBoundException ex) {
             Logger.getLogger(RegisterLookup.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
         }
     }
 }

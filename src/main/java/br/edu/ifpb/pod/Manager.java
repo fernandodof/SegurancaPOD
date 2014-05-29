@@ -46,12 +46,12 @@ public class Manager implements Serializable, FacadeService{
     public Message sendMessage(Session session, Message message) {
         if(sessionList.contains(session)){
             RegisterLookup registerLookup = new RegisterLookup();
-            registerLookup.publishLookup(session, message);
-            return message;
+            return registerLookup.publishLookup(session, message);
         }
         return null;
     }
 
+    
     @Override
     public boolean publish(ArrayList<Message> messages) throws RemoteException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
