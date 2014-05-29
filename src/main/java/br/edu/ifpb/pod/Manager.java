@@ -51,10 +51,9 @@ public class Manager implements Serializable, FacadeService{
         return null;
     }
 
-    
     @Override
-    public boolean publish(ArrayList<Message> messages) throws RemoteException {
+    public ArrayList<Message> publish(ArrayList<Message> messages) throws RemoteException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 }
