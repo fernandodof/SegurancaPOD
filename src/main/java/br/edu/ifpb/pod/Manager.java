@@ -7,8 +7,8 @@
 package br.edu.ifpb.pod;
 
 import br.edu.ifpb.dao.LoginDao;
-import java.io.Serializable;
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -18,9 +18,13 @@ import java.util.logging.Logger;
  *
  * @author Fernando
  */
-public class Manager implements Serializable, FacadeService{
+public class Manager extends UnicastRemoteObject implements FacadeService{
     LoginDao loginDao = new LoginDao();
     ArrayList<Session> sessionList = new ArrayList();
+
+    public Manager() throws RemoteException{
+        super();
+    }
     
     @Override
     public Session login(String login, String password) {
@@ -56,6 +60,4 @@ public class Manager implements Serializable, FacadeService{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    
-    
 }

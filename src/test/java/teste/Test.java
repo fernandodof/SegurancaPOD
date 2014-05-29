@@ -25,8 +25,10 @@ public class Test {
             LoginDao loginDao = new LoginDao();
             
             try {
-                loginDao.login(login, password);
-                return new Session();
+                if(loginDao.login(login, password)){
+                    return new Session();
+                }
+                return null;
             } catch (SQLException ex) {
                 Logger.getLogger(Test.class.getName()).log(Level.SEVERE, null, ex);
                 return null;
@@ -53,7 +55,13 @@ public class Test {
     }
     
     @org.junit.Test
-    public void testLogin() throws RemoteException {
+    public void testLoginTrue() throws RemoteException {
         assertNotNull(facadeService.login("filipe", "jhv654")); 
+        assertNull(facadeService.login("filipe", "errado")); 
+    }
+    
+    @org.junit.Test
+    public void testLoginFalse() throws RemoteException {
+        assertNull(facadeService.login("filipe", "errado")); 
     }
 }
