@@ -23,8 +23,8 @@ public class ConnectionFactory {
     private ConnectionFactory() {
         this.url = "jdbc:postgresql://localhost:5432/projeto2pod";
         this.usuario = "postgres";
-//        this.senha = "123";
-        this.senha = "123456";
+        this.senha = "123";
+//        this.senha = "123456";
     }
 
     public static ConnectionFactory getInstance() {

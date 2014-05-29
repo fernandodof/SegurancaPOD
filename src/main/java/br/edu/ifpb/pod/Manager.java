@@ -27,22 +27,29 @@ public class Manager extends UnicastRemoteObject implements FacadeService{
     }
     
     @Override
-    public Session login(String login, String password) {
-        Session session = null;
+    public Session login(String login, String password) throws RemoteException{
+        System.out.println(login);
+        System.out.println(password);
         try {
             if(this.loginDao.login(login, password)){
-                session = new Session();
+                Session session = new Session();
+                session.setValid(true);
                 sessionList.add(session);
+                System.out.println(session.getId());
+                System.out.println(session.isValid());
+                return session;
+            }else{
+                return null;
             }
         } catch (SQLException ex) {
             Logger.getLogger(Manager.class.getName()).log(Level.SEVERE, null, ex);
-            session = null;
+            return null;
         }
-        return session;
     }
 
     @Override
     public void logout(Session sesion) {
+        sesion.setValid(false);
         sessionList.remove(sesion);
     }
 
