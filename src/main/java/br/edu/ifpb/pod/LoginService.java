@@ -13,5 +13,5 @@ package br.edu.ifpb.pod;
 public interface LoginService {
     Session login (String login, String password);
     void logout (Session sesion);
-    Message sendMessage (Session session, String messageContent);
+    Message sendMessage (Session session, Message message);
 }
