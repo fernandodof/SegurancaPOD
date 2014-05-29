@@ -22,7 +22,7 @@ public class RegiterLookup{
 
         try {
             Registry registry = LocateRegistry.getRegistry("localhost", 10888);
-            LoginService loginService = (LoginService) registry.lookup("LoginService");
+            FacadeService loginService = (FacadeService) registry.lookup("FacadeService");
             
             loginService.sendMessage(session, message);
         } catch (RemoteException|NotBoundException ex) {

@@ -12,7 +12,7 @@ import java.rmi.registry.Registry;
 public class RegisterServiceManager {
     public static void main(String[] args) throws RemoteException, AlreadyBoundException {
         Registry registry = LocateRegistry.createRegistry(10888);
-        registry.bind("LoginService", new Manager());
+        registry.bind("FacadeService", new Manager());
                 
     }
 }

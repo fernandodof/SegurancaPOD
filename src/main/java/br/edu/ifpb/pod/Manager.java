@@ -18,7 +18,7 @@ import java.util.logging.Logger;
  *
  * @author Fernando
  */
-public class Manager implements Serializable, LoginService{
+public class Manager implements Serializable, FacadeService{
     LoginDao loginDao = new LoginDao();
     ArrayList<Session> sessionList = new ArrayList();
     
