@@ -21,14 +21,31 @@ public class RegisterLookup{
     public Message publishLookup(Session session, Message message){
 
         try {
-            Registry registry = LocateRegistry.getRegistry("localhost", 10888);
+            Registry registry = LocateRegistry.getRegistry("10.1.1.104", 10888);
             FacadeService facadeService = (FacadeService) registry.lookup("FacadeService");
-            
+//            System.out.println(message);
             return facadeService.sendMessage(session, message);
         } catch (RemoteException|NotBoundException ex) {
             Logger.getLogger(RegisterLookup.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
     }
+    
+//    public static void main(String[] args) throws RemoteException, NotBoundException {
+//        Registry registry = LocateRegistry.getRegistry("10.1.1.104", 10888);
+//        FacadeService facadeService = (FacadeService) registry.lookup("FacadeService");
+//        Session session = new Session();
+//        Message message = new Message();
+//        message.setId("10");
+//        message.setMessageContent("jose da silva");
+//        message.setTo("eu");
+//        message.setFrom("tu");
+//        
+//        Message message1 = facadeService.sendMessage(session, message);
+//        
+//        System.out.println(message1.getMessageContent());
+//        
+//    }
+    
 }
 

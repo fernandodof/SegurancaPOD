@@ -33,7 +33,6 @@ public class Manager extends UnicastRemoteObject implements FacadeService{
         try {
             if(this.loginDao.login(login, password)){
                 Session session = new Session();
-                session.setValid(true);
                 sessionList.add(session);
                 System.out.println(session.getId());
                 System.out.println(session.isValid());
