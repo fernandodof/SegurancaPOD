@@ -21,9 +21,10 @@ public class RegisterLookup{
     public Message publishLookup(Session session, Message message){
 
         try {
-            Registry registry = LocateRegistry.getRegistry("10.1.1.104", 10888);
+            Registry registry = LocateRegistry.getRegistry("192.168.10.11", 10888);
+//            Registry registry = LocateRegistry.getRegistry("25.15.29.154", 10888);
             FacadeService facadeService = (FacadeService) registry.lookup("FacadeService");
-//            System.out.println(message);
+            System.out.println(message.getMessageContent());
             return facadeService.sendMessage(session, message);
         } catch (RemoteException|NotBoundException ex) {
             Logger.getLogger(RegisterLookup.class.getName()).log(Level.SEVERE, null, ex);
